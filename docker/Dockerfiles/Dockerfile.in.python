@@ -3,4 +3,8 @@
 
 COPY install/python.sh install/
 RUN install/python.sh
+RUN pip2 install jupyter
 ENV PYTHONPATH=/mxnet/python
+WORKDIR /src
+EXPOSE 9999
+CMD jupyter notebook --port=9999 --ip=0.0.0.0 --allow-root
